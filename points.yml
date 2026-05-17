@@ -207,7 +207,7 @@ advanced:
     link: "https://www.selenium.dev/documentation/webdriver/browsers/"
 
   dockerized_execution:      # 4 pts | once
-    done: false
+    done: true
     description: "Run tests inside a Docker container (e.g. using docker-compose with Selenium Grid)"
     link: "https://www.selenium.dev/documentation/grid/getting_started/"
 

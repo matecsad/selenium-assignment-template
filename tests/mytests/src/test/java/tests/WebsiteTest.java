@@ -1,11 +1,6 @@
 package tests;
 
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.*;
-import org.openqa.selenium.remote.RemoteWebDriver;
-import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.List;
 import java.util.Random;
 import java.net.MalformedURLException;
@@ -14,23 +9,14 @@ import org.testng.annotations.*;
 import org.testng.*;
 
 import pages.*;
-import utils.ConfigReader;
 
-public class MySeleniumTest extends TestBase {
+public class WebsiteTest extends TestBase {
 
     @BeforeMethod
     public void Setup() throws MalformedURLException
     {
-        final Map<String, Object> chromePrefs = new HashMap<>();
-        chromePrefs.put("profile.password_manager_leak_detection", false);
-
-        ChromeOptions options = new ChromeOptions();
-        options.setExperimentalOption("prefs", chromePrefs);
-
-        this.driver = new RemoteWebDriver(new URL(ConfigReader.get("selenium_url")), options);
-        this.driver.manage().window().maximize();
+        before();
     }
-
 
     @Test
     public void courseCreation() {
@@ -88,9 +74,7 @@ public class MySeleniumTest extends TestBase {
 
     @AfterMethod
     public void close() {
-        if (this.driver != null) {
-            this.driver.quit();
-        }
+        after();
     }
 
 }
