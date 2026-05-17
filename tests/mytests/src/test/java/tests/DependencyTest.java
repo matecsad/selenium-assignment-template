@@ -24,10 +24,12 @@ public class DependencyTest extends TestBase {
         
         loginPage = login(loginPage);
 
-        sharedMainPage =loginPage.clickLogin();
+        sharedMainPage = loginPage.clickLogin();
         Assert.assertTrue(sharedMainPage.getBodyText().contains("Hi, Elte!"));
         Assert.assertFalse(sharedMainPage.getBodyText().contains("Log in"));
         Assert.assertEquals("Dashboard | ELTESelTest", sharedMainPage.getTitle());
+
+        System.out.println("Login test completed.");
     }
 
     @Test (dependsOnMethods = { "loginTest" })
@@ -35,6 +37,7 @@ public class DependencyTest extends TestBase {
         sharedMainPage.toggleUserMenu();
         sharedMainPage.clickLogout();
         Assert.assertTrue(sharedMainPage.getBodyText().contains("Log in"));
+        System.out.println("Logout test completed.");
     }
 
 

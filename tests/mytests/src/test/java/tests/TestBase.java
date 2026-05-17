@@ -15,13 +15,14 @@ import utils.ConfigReader;
 public class TestBase {
 
     protected WebDriver driver;
+    protected ChromeOptions options = new ChromeOptions();
 
     protected void before() throws MalformedURLException {
         final Map<String, Object> chromePrefs = new HashMap<>();
         chromePrefs.put("profile.password_manager_leak_detection", false);
 
         ChromeOptions options = new ChromeOptions();
-        options.setExperimentalOption("prefs", chromePrefs);
+        options.setExperimentalOption("prefs", chromePrefs); 
 
         this.driver = new RemoteWebDriver(new URL(ConfigReader.get("selenium_url")), options);
         this.driver.manage().window().maximize();

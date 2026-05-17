@@ -43,6 +43,8 @@ public class WebsiteTest extends TestBase {
         CoursePage coursePage = courseCreatorPage.submitCreateCourse();
         Assert.assertTrue(coursePage.getBodyText().contains("Selenium Testing Course " + randomNum));
 
+       System.out.println("Course creation test completed.");
+
         //Assert.assertTrue(courseCreatorPage.getBodyText().contains("Selenium Testing Course"));
     }
 
@@ -66,9 +68,16 @@ public class WebsiteTest extends TestBase {
         driver.manage().deleteCookieNamed("MoodleSessionelteseleniumtesting");
         driver.navigate().refresh();
 
+        try {
+            Thread.sleep(2000); 
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         Assert.assertFalse(mainPage.getBodyText().contains("Hi, Elte!"));
         Assert.assertTrue(mainPage.getBodyText().contains("Log in"));
 
+        System.out.println("Cookie handling test completed.");
     }
 
 
