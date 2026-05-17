@@ -1,4 +1,4 @@
-package test.java;
+package tests;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.*;
@@ -6,36 +6,18 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Scanner;
 import java.util.List;
 import java.util.Random;
-import java.beans.Transient;
 import java.net.MalformedURLException;
-import org.openqa.selenium.support.ui.*;
 
 import org.testng.annotations.*;
 import org.testng.*;
 
-public class MySeleniumTest {
+import pages.*;
+import utils.ConfigReader;
 
-    private WebDriver driver;
+public class MySeleniumTest extends TestBase {
 
-    private LoginPage login(LoginPage loginPage) {
-        loginPage = new LoginPage(this.driver, ConfigReader.get("moodle_url"));
-        
-        try {
-            loginPage.acceptCookies();
-        }
-        catch (Exception e){
-            System.out.println("Accept cookies button not found, proceeding without accepting cookies.");
-        }
-
-        loginPage.typeIntoUsername(ConfigReader.get("login_username"));
-        loginPage.typeIntoPassword(ConfigReader.get("login_password"));
-
-        return loginPage;
-    }
-    
     @BeforeMethod
     public void Setup() throws MalformedURLException
     {
@@ -49,26 +31,6 @@ public class MySeleniumTest {
         this.driver.manage().window().maximize();
     }
 
-    // @Test
-    // public void loginTest() {
-    //     LoginPage loginPage = null;
-        
-    //     loginPage = login(loginPage);
-
-    //     sharedMainPage =loginPage.clickLogin();
-    //     Assert.assertTrue(sharedMainPage.getBodyText().contains("Hi, Elte!"));
-    //     Assert.assertFalse(sharedMainPage.getBodyText().contains("Log in"));
-    //     Assert.assertEquals("Dashboard | ELTESelTest", sharedMainPage.getTitle());
-
-        
-    // }
-
-    // @Test (dependsOnMethods = { "loginTest" })
-    // public void logoutTest() {
-    //     sharedMainPage.toggleUserMenu();
-    //     sharedMainPage.clickLogout();
-    //     Assert.assertTrue(sharedMainPage.getBodyText().contains("Log in"));
-    // }
 
     @Test
     public void courseCreation() {

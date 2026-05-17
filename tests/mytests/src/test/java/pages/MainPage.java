@@ -1,17 +1,6 @@
-package test.java;
+package pages;
 
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.*;
-import org.openqa.selenium.remote.RemoteWebDriver;
-import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
-import java.net.MalformedURLException;
-import org.openqa.selenium.support.ui.*;
-
-import org.testng.annotations.*;
-import org.testng.*;
-
 
 public class MainPage extends PageBase {
     private By userMenuToggle = By.id("user-menu-toggle");

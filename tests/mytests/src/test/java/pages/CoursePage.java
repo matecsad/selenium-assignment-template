@@ -1,23 +1,12 @@
-package test.java;
+package pages;
 
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.*;
-import org.openqa.selenium.remote.RemoteWebDriver;
-import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
-import java.net.MalformedURLException;
-import org.openqa.selenium.support.ui.*;
 
-import org.testng.annotations.*;
-import org.testng.*;
-
-
-public class CoursesPage extends PageBase {
+public class CoursePage extends PageBase {
 
     private By createCourseButton = By.cssSelector("#newcourseform > button");
     
-    public CoursesPage(WebDriver driver)
+    public CoursePage(WebDriver driver)
     {
         super(driver);
         waitAndReturnElement(bodyLocator);
