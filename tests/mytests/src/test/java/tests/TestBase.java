@@ -5,6 +5,8 @@ import java.util.HashMap;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.*;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testng.annotations.Listeners;
+
 import java.net.URL;
 import java.util.Map;
 import java.net.MalformedURLException;
@@ -12,6 +14,7 @@ import java.net.MalformedURLException;
 import pages.LoginPage;
 import utils.ConfigReader;
 
+@Listeners(utils.TestListener.class)
 public class TestBase {
 
     protected WebDriver driver;
@@ -50,4 +53,7 @@ public class TestBase {
         return loginPage;
     }
 
+    public WebDriver getDriver() {
+        return this.driver;
+    }
 }
