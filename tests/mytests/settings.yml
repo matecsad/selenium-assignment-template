@@ -1,0 +1,4 @@
+selenium_url: "http://selenium:4444/wd/hub"
+moodle_url: "https://elteseleniumtesting.moodlecloud.com/login/index.php"
+login_username: "elte.selenium.moodle@gmail.com"
+login_password: "Elte_selenium_moodle191"

@@ -1,0 +1,24 @@
+plugins {
+    id 'java'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.seleniumhq.selenium:selenium-java:2.52.0'
+    testImplementation 'org.seleniumhq.selenium:selenium-chrome-driver:3.141.59'
+    
+    testImplementation "org.slf4j:slf4j-simple:1.7.9"
+    testImplementation 'org.yaml:snakeyaml:2.2'
+
+    testImplementation 'org.testng:testng:7.5'
+}
+
+test {
+    useTestNG()
+    testLogging.showStandardStreams = true
+}
+
+
