@@ -38,6 +38,7 @@ public class DependencyTest extends TestBase {
         sharedMainPage.clickLogout();
         Assert.assertTrue(sharedMainPage.getBodyText().contains("Log in"));
         System.out.println("Logout test completed.");
+        System.out.println("Dependency test completed.");
     }
 
 

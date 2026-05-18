@@ -4,6 +4,7 @@ import org.openqa.selenium.*;
 import java.util.List;
 import java.util.Random;
 import java.net.MalformedURLException;
+import java.util.UUID;
 
 import org.testng.annotations.*;
 import org.testng.*;
@@ -30,8 +31,9 @@ public class WebsiteTest extends TestBase {
 
         Random rand  = new Random();
         int randomNum = rand.nextInt(1000);
-        courseCreatorPage.typeCourseFullName("Selenium Testing Course " + randomNum);
-        courseCreatorPage.typeCourseShortName("STC " + randomNum);
+        UUID uniqueID = UUID.randomUUID();
+        courseCreatorPage.typeCourseFullName("Selenium Testing Course " + randomNum + " " );
+        courseCreatorPage.typeCourseShortName(uniqueID.toString());
 
         List<WebElement> selectElements = courseCreatorPage.selectCourseVisibility(0);
         Assert.assertTrue(selectElements.get(0).isSelected());
