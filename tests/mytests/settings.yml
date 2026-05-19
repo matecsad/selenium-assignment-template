@@ -2,3 +2,13 @@ selenium_url: "http://selenium:4444/wd/hub"
 moodle_url: "https://elteseleniumtesting.moodlecloud.com/login/index.php"
 login_username: "elte.selenium.moodle@gmail.com"
 login_password: "Elte_selenium_moodle191"
+array_of_urls:
+  - "https://elteseleniumtesting.moodlecloud.com/my/"
+  - "https://elteseleniumtesting.moodlecloud.com/my/courses.php"
+  - "https://elteseleniumtesting.moodlecloud.com/course/edit.php?category=1"
+  - "https://elteseleniumtesting.moodlecloud.com/course/view.php?id=9"
+array_of_urls_contents:
+  - "Dashboard"
+  - "Course overview"
+  - "Add a new course"
+  - "Test Course 1 Manual"

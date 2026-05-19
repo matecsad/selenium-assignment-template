@@ -10,6 +10,7 @@ import org.testng.annotations.*;
 import org.testng.*;
 
 import pages.*;
+import utils.ConfigReader;
 
 public class WebsiteTest extends TestBase {
 
@@ -20,7 +21,7 @@ public class WebsiteTest extends TestBase {
     }
 
     @Test
-    public void courseCreation() {
+    public void courseCreationTest() {
         LoginPage loginPage = null;
         
         loginPage = login(loginPage);
@@ -42,6 +43,9 @@ public class WebsiteTest extends TestBase {
         Assert.assertTrue(selectElements.get(1).isSelected());
         Assert.assertFalse(selectElements.get(0).isSelected());
 
+        WebElement checkboxElement = courseCreatorPage.clickEndDateEnabledCheckbox();
+        Assert.assertFalse(checkboxElement.isSelected());
+
         CoursePage coursePage = courseCreatorPage.submitCreateCourse();
         Assert.assertTrue(coursePage.getBodyText().contains("Selenium Testing Course " + randomNum));
 
@@ -51,7 +55,7 @@ public class WebsiteTest extends TestBase {
     }
 
     @Test
-    public void cookieHandling() {
+    public void cookieHandlingTest() {
         LoginPage loginPage = null;
         
         loginPage = login(loginPage);
@@ -80,6 +84,23 @@ public class WebsiteTest extends TestBase {
         Assert.assertTrue(mainPage.getBodyText().contains("Log in"));
 
         System.out.println("Cookie handling test completed.");
+    }
+
+    @Test
+    public void arrayofUrlsTest() {
+        LoginPage loginPage = null;
+        loginPage = login(loginPage);
+        loginPage.clickLogin();
+        List<String> urls = ConfigReader.getList("array_of_urls");
+        List<String> urlContents = ConfigReader.getList("array_of_urls_contents");
+        for (int i = 0; i < urls.size(); i++) {
+            String url = urls.get(i);
+            driver.navigate().to(url);
+            PageBase page = new PageBase(driver);
+            Assert.assertTrue(page.getBodyText().contains(urlContents.get(i)));
+        }
+
+        System.out.println("Array of URLs test completed.");
     }
 
 

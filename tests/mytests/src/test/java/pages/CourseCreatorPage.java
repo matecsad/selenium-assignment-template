@@ -10,6 +10,7 @@ public class CourseCreatorPage extends PageBase {
     private By visibilitySelect = By.cssSelector("#id_visible");
     //private By hoverable = By.cssSelector("#fitem_id_fullname > div.col-md-3.col-form-label.d-flex.pb-0.pe-md-0 > div > a > i");
     private By createCourseButton = By.cssSelector("#id_saveanddisplay");
+    private By endDateEnabledCheckbox = By.cssSelector("#id_enddate_enabled");
 
     public CourseCreatorPage(WebDriver driver)
     {
@@ -34,6 +35,12 @@ public class CourseCreatorPage extends PageBase {
         select.selectByIndex(index);
 
         return select.getOptions();
+    }
+
+    public WebElement clickEndDateEnabledCheckbox() {
+        WebElement checkbox = waitAndReturnElement(endDateEnabledCheckbox);
+        checkbox.click();
+        return checkbox;
     }
 
     public CoursePage submitCreateCourse() {

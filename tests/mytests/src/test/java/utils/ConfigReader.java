@@ -4,6 +4,7 @@ import org.yaml.snakeyaml.Yaml;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.util.List;
 import java.util.Map;
 
 public class ConfigReader {
@@ -30,5 +31,9 @@ public class ConfigReader {
 
     public static String get(String key) {
         return (String) settings.get(key);
+    }
+
+    public static List<String> getList(String key) {
+        return (List<String>) settings.get(key);
     }
 }
