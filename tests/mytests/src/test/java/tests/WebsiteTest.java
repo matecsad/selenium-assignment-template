@@ -103,6 +103,23 @@ public class WebsiteTest extends TestBase {
         System.out.println("Array of URLs test completed.");
     }
 
+    @Test
+    public void historyTest() {
+        LoginPage loginPage = null;
+        loginPage = login(loginPage);
+        MainPage mainPage = loginPage.clickLogin();
+
+        Assert.assertTrue(mainPage.getBodyText().contains("Hi, Elte!"));
+        CoursesPage coursesPage = mainPage.clickMyCourses();
+        Assert.assertTrue(coursesPage.getBodyText().contains("My courses"));
+        driver.navigate().back();
+        Assert.assertTrue(mainPage.getBodyText().contains("Hi, Elte!"));
+        driver.navigate().forward();
+        Assert.assertTrue(coursesPage.getBodyText().contains("My courses"));
+
+        System.out.println("History test completed.");
+    }
+
 
     @AfterMethod
     public void close() {
