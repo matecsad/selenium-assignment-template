@@ -8,7 +8,7 @@
 # ============================================================
 
 student:
-  website_under_test: "https://sandbox.moodledemo.net"
+  website_under_test: "https://elteseleniumtesting.moodlecloud.com/login/index.php"
     
     
 # ----------------------------------------------------------
