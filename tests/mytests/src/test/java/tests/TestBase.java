@@ -39,7 +39,13 @@ public class TestBase {
 
     protected LoginPage login(LoginPage loginPage) {
         loginPage = new LoginPage(this.driver, ConfigReader.get("moodle_url"));
-        
+
+        try {
+            Thread.sleep(1000); 
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         try {
             loginPage.acceptCookies();
         }

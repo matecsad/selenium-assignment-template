@@ -110,12 +110,16 @@ public class WebsiteTest extends TestBase {
         MainPage mainPage = loginPage.clickLogin();
 
         Assert.assertTrue(mainPage.getBodyText().contains("Hi, Elte!"));
+        Assert.assertFalse(mainPage.getBodyText().contains("Manage courses"));
         CoursesPage coursesPage = mainPage.clickMyCourses();
-        Assert.assertTrue(coursesPage.getBodyText().contains("My courses"));
+        Assert.assertTrue(coursesPage.getBodyText().contains("Manage courses"));
+        Assert.assertFalse(mainPage.getBodyText().contains("Hi, Elte!"));
         driver.navigate().back();
         Assert.assertTrue(mainPage.getBodyText().contains("Hi, Elte!"));
+        Assert.assertFalse(coursesPage.getBodyText().contains("Manage courses"));
         driver.navigate().forward();
-        Assert.assertTrue(coursesPage.getBodyText().contains("My courses"));
+        Assert.assertTrue(coursesPage.getBodyText().contains("Manage courses"));
+        Assert.assertFalse(mainPage.getBodyText().contains("Hi, Elte!"));
 
         System.out.println("History test completed.");
     }
